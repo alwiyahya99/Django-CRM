@@ -36,12 +36,12 @@
             <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout</a>
           </form>
         {% else %}
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Login</a>
-          </li>
+          </li> {% endcomment %}
           </ul>
           <form class="d-flex" role="search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <a href="{% url 'home' %}" class="btn btn-outline-success">Login</a>
           </form>
         {% endif %}
 
