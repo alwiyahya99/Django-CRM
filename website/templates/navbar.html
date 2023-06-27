@@ -56,9 +56,12 @@
             <a class="nav-link" href="{% url 'home' %}">Login</a>
           </li> {% endcomment %}
           </ul>
-          <form class="d-flex" role="search">
-          <a href="{% url 'home' %}" class="btn btn-outline-success">Login</a>
-          </form>
+            <form class="d-flex">
+              <a href="{% url 'register' %}" class="btn btn-outline-success">Register</a>
+            </form>
+            <form class="d-flex">
+              <a href="{% url 'home' %}" class="btn btn-outline-success">Login</a>
+            </form>
         {% endif %}
 
     </div>

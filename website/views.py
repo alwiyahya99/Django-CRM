@@ -15,7 +15,7 @@ def home(request):
         
         if user is not None:
             login(request, user)
-            messages.success(request, "You have been logged in successfully")
+            messages.success(request, "Hai, " + username + " Selamat datang kembali")
             return redirect('home')
         else:
             messages.success(request, "There was an error, please try again")
@@ -31,6 +31,9 @@ def logout_user(request):
     messages.success(request, "You have been logged out successfully")
     return redirect('home')
 
+def register_user(request):
+    return render(request, 'register.html', {})
+
 def keuangan(request):
     template = loader.get_template('keuangan.html')
     context = {
@@ -39,7 +42,10 @@ def keuangan(request):
     return HttpResponse(template.render(context, request))   
 
 def pekerjaan(request):
-    return render(request, 'pekerjaan.html')
-
+    template = loader.get_template('pekerjaan.html')
+    context = {
+        'name_page': 'Pekerjaan'
+        }
+    return HttpResponse(template.render(context,request))
 def pegawai(request):
     return render(request, 'pegawai.html')
