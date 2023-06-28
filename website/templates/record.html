@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Customer Records :</h1>
+<div class="card" style="width: 18rem;">
+    {% comment %} <img src="..." class="card-img-top" alt="..."> {% endcomment %}
+        <div class="card-body">
+            <h5 class="card-title">{{customer_record.first_name}} {{customer_record.last_name}}</h5>
+        </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{customer_record.email}}</li>
+                <li class="list-group-item">{{customer_record.address}}</li>
+                <li class="list-group-item">{{customer_record.city}}</li>
+                <li class="list-group-item">{{customer_record.state}}</li>
+                <li class="list-group-item">{{customer_record.zipcode}}</li>
+                <li class="list-group-item">{{customer_record.created_at}}</li>
+            </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+
+
+{% endblock %}

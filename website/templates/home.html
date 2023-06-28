@@ -2,26 +2,47 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
+{% if user.is_authenticated %}
 
-    {% if user.is_authenticated %}
+    <h1>Records......</h1>
 
-        <h1>Records......</h1>
-        {% if records %}
-            {% for record in records %}
-                {{record.first_name}}
-                {{record.last_name}}
-                {{record.email}}
-                {{record.address}}
-                {{record.city}}
-                {{record.state}}
-                {{record.zipcode}}
-                {{record.id}} </br>
-            {% endfor %}
-        {% endif %}
+    <table class="table table-striped table-hover table-bordered ">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nama Depan</th>
+                <th scope="col">Nama Belakang</th>
+                <th scope="col">Email</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Kota</th>
+                <th scope="col">Provinsi</th>
+                <th scope="col">Kode Pos</th>
+                <th scope="col">Created At</th>
+                <th scope="col"></th>
+            </tr>
+        <tbody>
+            {% if records %}
+                {% for record in records %}
+                    <tr>
+                        <td>{{record.id}}</td>
+                        <td>{{record.first_name}}</td>
+                        <td>{{record.last_name}}</td>
+                        <td>{{record.email}}</td>
+                        <td>{{record.address}}</td>
+                        <td>{{record.city}}</td>
+                        <td>{{record.state}}</td>
+                        <td>{{record.zipcode}}</td>
+                        <td>{{record.created_at}}</td>
+                        <td><a href="{% url 'record' record.id %}" class="btn btn-primary btn-sm">Aksi</a></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
 
-    {% else %}
+{% else %}
 
+    <div class="col-md-6 offset-md-3">
         <h1>Login</h1>
         </br>
         <form method="post" action="{% url 'home' %}">
@@ -38,7 +59,6 @@
                 <button type="submit" class="btn btn-secondary">Login</button>
             </form>
         </form>
-</div>
 
 {% endif %}
 

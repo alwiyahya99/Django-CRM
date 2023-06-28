@@ -66,5 +66,16 @@ def pekerjaan(request):
         'name_page': 'Pekerjaan'
         }
     return HttpResponse(template.render(context,request))
+
 def pegawai(request):
     return render(request, 'pegawai.html')
+
+def customer_record(request, pk):
+    if request.user.is_authenticated:
+        #  Look up record
+        customer_record = Record.objects.get(id=pk)
+        return render(request, 'record.html', {'customer_record':customer_record})
+    else:
+        messages.success(request, "You Must Be Logged In To View That Page ......")
+        return redirect('home')
+    
