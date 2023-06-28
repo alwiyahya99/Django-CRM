@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from .form import SignUpForm
 from .models import Record
 
-
 # Create your views here.
 def home(request):
     records = Record.objects.all()
